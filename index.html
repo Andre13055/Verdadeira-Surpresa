@@ -85,9 +85,7 @@
         let guerraBtn = document.createElement('button');
         guerraBtn.id = 'guerraBtn';
         guerraBtn.innerText = 'Guerra';
-        guerraBtn.onclick = function() {
-            openPhotoGallery(); // Abre a galeria de fotos e toca música
-        };
+        guerraBtn.onclick = openPhotoGallery; // Abre a galeria de fotos e toca música
         document.body.appendChild(guerraBtn);
     }
 
@@ -104,19 +102,10 @@
         let photoContainer = document.createElement('div');
         photoContainer.id = 'photo-container';
 
-        // Adiciona as fotos da pasta no GitHub
+        // Lista de fotos
         const photoUrls = [
             'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.09.jpeg',
-            'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.10%20(1).jpeg',
-            'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.10%20(2).jpeg',
-            'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.10%20(3).jpeg',
-            'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.10.jpeg',
-            'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.11%20(1).jpeg',
-            'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.11%20(2).jpeg',
-            'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.11%20(3).jpeg',
-            'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.11.jpeg',
-            'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.12%20(1).jpeg',
-            'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.12.jpeg'
+            'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.10.jpeg'
         ];
 
         // Cria e adiciona as imagens ao container
@@ -125,15 +114,15 @@
         imgElement.src = photoUrls[imgIndex];
         photoContainer.appendChild(imgElement);
         document.body.appendChild(photoContainer);
-        
+
         // Exibe a galeria de fotos
-        document.getElementById('photo-container').style.display = 'block';
+        photoContainer.style.display = 'block';
 
         // Troca as fotos a cada 5 segundos
         setInterval(() => {
-            imgIndex = (imgIndex + 1) % photoUrls.length; // Garante que o índice não ultrapasse o tamanho do array
+            imgIndex = (imgIndex + 1) % photoUrls.length;
             imgElement.src = photoUrls[imgIndex];
-        }, 5000); // Troca a foto a cada 5 segundos
+        }, 5000);
     }
 </script>
 
