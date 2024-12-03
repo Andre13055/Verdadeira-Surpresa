@@ -1,130 +1,110 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensagem de Aniversário</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.0/dist/confetti.browser.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
-        }
-        .message-container {
-            margin-top: 100px;
-        }
-        #specialMessage {
-            font-size: 2em;
-            color: #333;
-        }
-        .btn {
-            padding: 15px 30px;
-            font-size: 1.2em;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #45a049;
-        }
-        #guerraBtn {
-            background-color: red;
-            color: white;
-            border: 2px solid black;
-            font-size: 1.5em;
-            text-transform: uppercase;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        #guerraBtn:hover {
-            background-color: darkred;
-        }
-        .audio-player {
-            margin-top: 20px;
-        }
-        #photo-container {
-            display: none;
-            margin-top: 20px;
-        }
-        #photo-container img {
-            width: 100%;
-            margin-bottom: 10px;
-            border-radius: 8px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Aniversário, Sofia!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      color: #ff69b4;
+    }
+    p {
+      color: #555;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      position: absolute;
+    }
+    #slideshow {
+      display: none;
+      margin-top: 20px;
+    }
+    #slideshow img {
+      max-width: 80%;
+      height: auto;
+    }
+  </style>
 </head>
 <body>
+  <h1>Feliz Aniversário, Sofia Oliveira de Andrade!</h1>
+  <p>Amo gostar de você, Paçoquita!</p>
+  <button id="botao">Guerra</button>
+  <div id="slideshow">
+    <img id="imagem" src="" alt="Feliz aniversário!">
+  </div>
+  <audio id="musica" loop>
+    <source src="https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/Charlie%20Brown%20Jr%20-%20Proibida%20Pra%20Mim.mp3" type="audio/mpeg">
+    Seu navegador não suporta o elemento de áudio.
+  </audio>
 
-<div class="message-container">
-    <div id="specialMessage">Você quer ver uma coisa realmente especial?</div>
-    <button class="btn" onclick="showConfetti()">Clique aqui!</button>
-</div>
+  <script>
+    const botao = document.getElementById('botao');
+    const slideshow = document.getElementById('slideshow');
+    const imagem = document.getElementById('imagem');
+    const musica = document.getElementById('musica');
 
-<script>
-    function showConfetti() {
-        // Exibe confetes ao clicar no botão
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 }
-        });
+    const imagens = [
+      'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.09.jpeg',
+      'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.10%20(1).jpeg',
+      'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.10%20(2).jpeg',
+      'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.10%20(3).jpeg',
+      'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.10.jpeg',
+      'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.11%20(1).jpeg',
+      'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.11%20(2).jpeg',
+      'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.11%20(3).jpeg',
+      'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.11.jpeg',
+      'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.12%20(1).jpeg',
+      'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.12.jpeg'
+    ];
 
-        // Exibe a mensagem de aniversário
-        setTimeout(() => {
-            document.getElementById("specialMessage").innerHTML = "Feliz Aniversário, Sofia Oliveira de Andrade! Amo gostar de você!";
-            document.querySelector(".btn").style.display = "none"; // Remove o botão
-            showGuerraButton(); // Exibe o botão "Guerra"
-        }, 2000); // Espera 2 segundos antes de mostrar a mensagem
+    let posicoes = [
+      { top: '30%', left: '30%' },
+      { top: '30%', left: '70%' },
+      { top: '70%', left: '30%' },
+      { top: '70%', left: '70%' }
+    ];
+    let movimentos = 0;
+
+    botao.style.top = '50%';
+    botao.style.left = '50%';
+
+    botao.addEventListener('click', () => {
+      if (movimentos < 4) {
+        const novaPosicao = posicoes[movimentos];
+        botao.style.top = novaPosicao.top;
+        botao.style.left = novaPosicao.left;
+        movimentos++;
+      } else {
+        iniciarSlideshow();
+      }
+    });
+
+    function iniciarSlideshow() {
+      botao.style.display = 'none';
+      slideshow.style.display = 'block';
+      musica.play();
+
+      let index = 0;
+      imagem.src = imagens[index];
+
+      setInterval(() => {
+        index = (index + 1) % imagens.length;
+        imagem.src = imagens[index];
+      }, 5000);
     }
-
-    function showGuerraButton() {
-        let guerraBtn = document.createElement('button');
-        guerraBtn.id = 'guerraBtn';
-        guerraBtn.innerText = 'Guerra';
-        guerraBtn.onclick = openPhotoGallery; // Abre a galeria de fotos e toca música
-        document.body.appendChild(guerraBtn);
-    }
-
-    function openPhotoGallery() {
-        // Adiciona o player de música
-        let audioPlayer = document.createElement('audio');
-        audioPlayer.controls = true;
-        audioPlayer.src = 'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/Charlie%20Brown%20Jr%20-%20Proibida%20Pra%20Mim.mp3';
-        audioPlayer.play();
-        audioPlayer.classList.add('audio-player');
-        document.body.appendChild(audioPlayer);
-
-        // Cria o container de fotos
-        let photoContainer = document.createElement('div');
-        photoContainer.id = 'photo-container';
-
-        // Lista de fotos
-        const photoUrls = [
-            'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.09.jpeg',
-            'https://github.com/Andre13055/Verdadeira-Surpresa/raw/main/soso/WhatsApp%20Image%202024-12-02%20at%2021.58.10.jpeg'
-        ];
-
-        // Cria e adiciona as imagens ao container
-        let imgIndex = 0;
-        let imgElement = document.createElement('img');
-        imgElement.src = photoUrls[imgIndex];
-        photoContainer.appendChild(imgElement);
-        document.body.appendChild(photoContainer);
-
-        // Exibe a galeria de fotos
-        photoContainer.style.display = 'block';
-
-        // Troca as fotos a cada 5 segundos
-        setInterval(() => {
-            imgIndex = (imgIndex + 1) % photoUrls.length;
-            imgElement.src = photoUrls[imgIndex];
-        }, 5000);
-    }
-</script>
-
+  </script>
 </body>
 </html>
